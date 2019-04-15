@@ -1,0 +1,70 @@
+#include "pch.h"
+#include <iostream>
+#include<string>
+#include "windows.h"
+
+using namespace std;
+
+class  Figure 
+{
+protected:
+	double sqr;
+public:
+	virtual void square() = 0;
+};
+
+class Quadrilateral : public Figure 
+{
+protected:
+	double a1, a2, a3, a4;
+public:
+	void enter()
+	{
+		cout << "Длина двух сторон четырехуголника равна:";
+		cin >> a1 >> a2 ;
+		
+	}
+	virtual void square() = 0;
+};
+class Rhombus : public Quadrilateral 
+{
+private:
+	double h;
+public:
+	void set()
+	{
+	cout << "Высота ромба равна:" ;
+	cin >> h;
+	}
+	void square() 
+	{
+		
+		sqr = a1 * h;
+		cout << "Площадь ромба равна"<< sqr<<endl;
+	}
+};
+class Rect : public Quadrilateral 
+	public:
+	void square()
+	{
+		sqr = a1 * a2;
+		cout << "Площадь прямоугольника равна" << sqr << endl;
+	}
+};
+
+int main()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	system("color 0A");
+	
+	Rhombus a;
+	a.enter();
+	a.set();
+	a.square();
+	Rect b;
+	b.enter();
+	b.square();
+	system("pause");
+	return 0;
+}
