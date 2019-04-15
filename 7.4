@@ -1,0 +1,111 @@
+#include "pch.h"
+#include <iostream>
+#include<string>
+#include "windows.h"
+
+using namespace std;
+
+class  Screen 
+{
+protected:
+	int wide;
+	int length;
+
+public:
+	virtual void resolution() = 0;
+};
+
+class  Keyboard 
+protected:
+	string type;
+
+public:
+	virtual void klaviatura() = 0;
+};
+
+class Laptop: public  Screen, Keyboard 
+{
+public:
+	void resolution()
+	{
+		cout << "Введите разрешение (по ширине и длине):";
+		cin >> wide >> length;
+	}
+	void klava()
+	{
+		cout << "Тип клавиатуры:";
+		cin >> type;
+	}
+	void out()
+	{
+		cout << "Разрешение экрана ноутбука: "<<wide<<"x"<<length<<endl;
+		cout << "Тип клавиатуры ноутбука: " << type<< endl;
+	}
+	
+};
+class Phone : public  Screen, Keyboard 
+{
+public:
+	void resolution()
+	{
+		cout << "Введите разрешение по ширине и длине: ";
+		cin >> wide >> length;
+	}
+	void klava()
+	{
+		cout << "Введите тип клавиатуры: ";
+		cin >> type;
+	}
+	void out()
+	{
+		cout << "Разрешение экрана телефона: " << wide << "x" << length << endl;
+		cout << "Тип клавиатуры телефона: " << type << endl;
+	}
+};
+class PC : public  Screen, Keyboard 
+{
+public:
+	void resolution()
+	{
+		cout << "Введите разрешение по ширине и длине: ";
+		cin >> wide >> length;
+	}
+	void klava()
+	{
+		cout << "Введите тип клавиатуры: ";
+		cin >> type;
+	}
+	void out()
+	{
+		cout << "Разрешение экрана ПК " << wide << "x" << length << endl;
+		cout << "Тип клавиатуры ПК " << type << endl;
+	}
+};
+
+int main()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	system("color 0A");
+
+	cout << "Ноутбук" << endl;
+	Laptop a;
+	a.resolution();
+	a.klava();
+	a.out();
+	
+	cout << "Телефон" << endl;
+	Phone b;
+	b.resolution();
+	b.klava();
+	b.out();
+
+	cout << "ПК" << endl;
+	PC c;
+	c.resolution();
+	c.klava();
+	c.out();
+	
+	system("pause");
+	return 0;
+}
