@@ -1,0 +1,84 @@
+#include "pch.h"
+#include <iostream>
+#include<string>
+#include "windows.h"
+
+using namespace std;
+
+class Animal//Класс животное 
+{
+protected:
+	string name;
+	int year;
+public:
+	void set()
+	{
+		cout << "Введите имя:";
+		cin >> name;
+		cout << "Введите возраст:";
+		cin >> year;
+	}
+	void out()
+	{
+		cout << "Я " << name << " мне " << year << endl;
+	}
+	virtual void golos() = 0;
+};
+
+class Cat : public Animal 
+public:
+	void golos()
+	{
+		cout << "мяу" << endl;
+	}
+
+};
+
+class Dog : public Animal
+{
+public:
+	void golos()
+	{
+		cout << "гав" << endl;
+	}
+
+};
+class Parrot : public Animal
+{
+public:
+	void golos()
+	{
+		cout << "кукареку" << endl;
+	}
+
+};
+
+int main()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	system("color 0A");
+
+	Cat a;
+	cout << "кошка" << endl;
+	a.set();
+	a.out();
+	a.golos();
+	cout << endl;
+
+	Dog b;
+	cout << "собака" << endl;
+	b.set();
+	b.out();
+	b.golos();
+	cout << endl;
+
+	Parrot c;
+	cout << "попугай" << endl;
+	c.set();
+	c.out();
+	c.golos();
+
+	system("pause");
+	return 0;
+}
