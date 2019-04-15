@@ -1,0 +1,79 @@
+#include "pch.h"
+#include <iostream>
+#include<string>
+#include "windows.h"
+
+using namespace std;
+
+class Vehicle//абстрактный базовый класс транспортное средство 
+{
+protected:
+	string model;
+	string name;
+	int speed;
+public:
+	void set()
+	{
+		cout << "Марка:";
+		cin >> name;
+		cout << "Модель:";
+		cin >> model;
+		cout << "Максимальная скорость:";
+		cin >> speed;
+		
+	}
+	virtual void out() = 0;
+};
+
+class avto : public Vehicle  
+{
+public:
+	void out()
+	{
+		cout << "макс. скорость автомобиля " << name << " "<< model <<" "<< speed<< "км/ч" << endl;
+	}
+
+};
+
+class Bycicle : public Vehicle
+{
+public:
+	void out()
+	{
+		cout << "макс. скорость велосипеда " << name << " " << model << " " << speed << "км/ч" << endl;
+	}
+
+};
+class Bus : public Vehicle
+{
+public:
+	void out()
+	{
+		cout << "макс. " << name << " " << model << " " << speed << "км/ч" << endl;
+	}
+
+};
+
+int main()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	system("color 0A");
+	cout << "Автомобиль" << endl;
+	avto a;
+	a.set();
+	a.out();
+	cout << endl;
+	cout << "Велосипед" << endl;
+	Bycicle b;
+	b.set();
+	b.out();
+	cout << endl;
+	cout << "Автобус" << endl;
+	Bus c;
+	c.set();
+	c.out();
+
+	system("pause");
+	return 0;
+}
